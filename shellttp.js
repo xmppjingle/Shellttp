@@ -8,11 +8,11 @@ function cmd_exec(cmd, args, cb_stdout, cb_end) {
   child.stdout.on('end', function () { cb_end(me) });
 }
 
-var stun_check;
+var check;
 var result = 'Pending...';
 
 function update(){
- stun_check = new cmd_exec(process.argv[2], [process.argv[3]], 
+ check = new cmd_exec(process.argv[2], [process.argv[3]], 
   function (me, data) {var line = data.toString(); me.stdout = line;},
   function (me) {result=me.stdout; me.exit = 1;}
 );
